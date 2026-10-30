@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Ascesa Digitale × La Fenice — Proposta Lead Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<!-- =========================================================
+     LA FENICE SRL — DECK (single file)
+     Per modificare TESTI e NUMERI: cerca i blocchi di testo nelle
+     slide qui sotto. I numeri (lead, conversioni, prezzi) sono ESEMPI:
+     sostituiscili con i tuoi dati reali. Compila anche i contatti
+     Ascesa Digitale nell'ultima slide.
+     L'accento arancio fuoco si cambia in una sola riga: --accent qui sotto.
+========================================================= -->
+
+<style>
+:root{
+  --bg:#0c0e11; --bg-2:#101318; --surface:#161a20; --surface-2:#1d222b;
+  --line:#272d37; --text:#f3f5f8; --muted:#98a2b0;
+  --accent:#ff6b2c; --accent-2:#d9481a;
+  --font-display:"Archivo",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+
+.deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;scrollbar-width:none;}
+.deck::-webkit-scrollbar{width:0;background:transparent;}
+.slide{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;flex-direction:column;justify-content:center;}
+.wrap{margin:0 auto;width:100%;max-width:1152px;padding:80px 24px;}
+@media(min-width:768px){.wrap{padding:80px 48px;}}
+
+.eyebrow{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--accent);margin-bottom:20px;}
+.display{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;line-height:.98;margin:0;}
+.mono{font-family:var(--font-mono);}
+.accent{color:var(--accent);}
+.muted{color:var(--muted);}
+
+.bg-grid{background-image:linear-gradient(to right,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;}
+.card-accent{background:linear-gradient(160deg,rgba(255,107,44,.12),rgba(255,107,44,.02));border:1px solid rgba(255,107,44,.35);border-radius:14px;}
+.glow{box-shadow:0 0 0 1px var(--line),0 24px 80px -40px rgba(255,107,44,.45);}
+
+h1.hero{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;line-height:.98;font-size:clamp(2.6rem,7vw,4.6rem);margin:0;}
+h2.title{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;line-height:1;font-size:clamp(2rem,5vw,3.6rem);margin:0;}
+h3{font-family:var(--font-display);font-weight:700;margin:0;}
+p{line-height:1.6;}
+
+.lead{font-size:1.1rem;color:var(--muted);max-width:38rem;margin-top:24px;}
+.grid{display:grid;gap:24px;}
+@media(min-width:768px){
+  .g2{grid-template-columns:repeat(2,1fr);}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .split{grid-template-columns:1.3fr .7fr;}
+  .split-cover{grid-template-columns:1.1fr .9fr;align-items:center;}
+  .split-point{grid-template-columns:1.2fr .8fr;}
+}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+.reveal.in{opacity:1;transform:none;}
+
+/* nav */
+.header{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+@media(min-width:768px){.header{padding:16px 48px;}}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo .g{display:flex;height:28px;width:28px;align-items:center;justify-content:center;border-radius:6px;background:var(--accent);color:var(--bg);font-family:var(--font-display);font-weight:800;font-size:.9rem;}
+.logo .name{font-family:var(--font-display);font-weight:700;font-size:.9rem;}
+.byline{font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);}
+
+.sidenav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:40;display:none;flex-direction:column;align-items:flex-end;gap:12px;}
+@media(min-width:768px){.sidenav{display:flex;}}
+.counter{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);}
+.dots{display:flex;flex-direction:column;gap:10px;}
+.dot{height:8px;width:8px;border:0;padding:0;border-radius:99px;background:var(--line);cursor:pointer;transition:all .3s;}
+.dot:hover{background:var(--muted);}
+.dot.active{width:28px;background:var(--accent);}
+
+.pill{font-family:var(--font-mono);width:fit-content;border:1px solid rgba(255,107,44,.4);border-radius:99px;padding:4px 12px;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);}
+.row{display:flex;justify-content:space-between;align-items:center;}
+.hr{height:1px;background:var(--line);}
+.btn{display:inline-flex;align-items:center;gap:12px;border-radius:99px;background:var(--accent);color:var(--bg);font-family:var(--font-display);font-weight:700;padding:16px 32px;text-decoration:none;transition:transform .2s;}
+.btn:hover{transform:scale(1.03);}
+
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.2;background:radial-gradient(circle,var(--accent),transparent 70%);}
+
+.featrow{display:flex;gap:16px;padding:20px;}
+.featrow .ar{font-family:var(--font-mono);color:var(--accent);margin-top:2px;}
+.stepnum{margin-bottom:20px;display:flex;height:56px;width:56px;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--accent);background:var(--bg);font-family:var(--font-mono);font-size:.9rem;color:var(--accent);}
+
+@media(prefers-reduced-motion:reduce){html,.deck{scroll-behavior:auto;}.reveal{transition:none;}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo"><span class="g">F</span><span class="name">La Fenice</span></div>
+  <div class="byline">a cura di <span style="color:var(--text)">Ascesa Digitale</span></div>
+</header>
+
+<div class="sidenav">
+  <div class="counter"><span class="accent" id="cur">01</span> / 10</div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 COVER -->
+  <section class="slide" data-slide="0">
+    <div style="position:absolute;inset:0;z-index:-1;overflow:hidden;">
+      <div class="bg-grid" style="position:absolute;inset:0;opacity:.6;"></div>
+      <div class="blob" style="right:-160px;top:50%;height:70vh;width:70vh;transform:translateY(-50%);"></div>
+    </div>
+    <div class="wrap">
+      <div class="grid split-cover">
+        <div>
+          <div class="eyebrow reveal">Proposta strategica · Lead Generation Noleggio Lungo Termine</div>
+          <h1 class="hero reveal">Più richieste<br/>di preventivo<br/>qualificate per<br/><span class="accent">La Fenice.</span></h1>
+          <p class="lead reveal">Un sistema di acquisizione lead in Sicilia e in tutta Italia — gestito da Ascesa Digitale — con tracciamento per locandina, scrematura AI e contatto iper-profilato consegnato direttamente al vostro team commerciale.</p>
+          <div class="byline reveal" style="margin-top:40px;">Preparato per La Fenice srl · Agenzia Leasys per la Sicilia · 2026</div>
+        </div>
+        <div class="reveal">
+          <div style="background:#fff;border-radius:18px;padding:20px;box-shadow:0 30px 80px -30px rgba(255,107,44,.45);"><img src="https://noleggio.lafenicesrl.it/public/auto/auto_526.jpg" alt="Noleggio lungo termine La Fenice" style="width:100%;display:block;border-radius:10px;" /><div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:#0c0e11;"><span style="font-family:var(--font-display);font-weight:700;">Noleggio a lungo termine</span><span style="font-family:var(--font-mono);font-size:.8rem;background:var(--accent);color:#fff;border-radius:99px;padding:4px 12px;">da 179 €/mese</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CONTESTO -->
+  <section class="slide bg-grid" data-slide="1">
+    <div class="wrap">
+      <div class="eyebrow reveal">Il contesto</div>
+      <h2 class="title reveal" style="max-width:48rem;">La Fenice oggi: l'Agenzia Leasys di riferimento in Sicilia.</h2>
+      <p class="lead reveal" style="max-width:42rem;">Esperienza, un catalogo completo — auto, moto, minicar, veicoli commerciali e NCC — e consegna in tutta Italia. La leva di crescita è un flusso costante di richieste di preventivo qualificate, da privati e partite IVA. È esattamente quello che costruiamo.</p>
+      <div class="grid g4" style="margin-top:48px;">
+        <div class="card reveal" style="padding:24px;"><div class="display accent" style="font-size:3rem;"><span class="countup" data-to="10">0</span>+</div><div class="muted" style="margin-top:8px;font-size:.9rem;">Anni nel noleggio a lungo termine</div></div>
+        <div class="card reveal" style="padding:24px;"><div class="display accent" style="font-size:3rem;"><span class="countup" data-to="18">0</span></div><div class="muted" style="margin-top:8px;font-size:.9rem;">Marchi disponibili</div></div>
+        <div class="card reveal" style="padding:24px;"><div class="display accent" style="font-size:3rem;"><span class="countup" data-to="7">0</span></div><div class="muted" style="margin-top:8px;font-size:.9rem;">Categorie di veicoli</div></div>
+        <div class="card reveal" style="padding:24px;"><div class="display accent" style="font-size:3rem;"><span class="countup" data-to="179">0</span> €</div><div class="muted" style="margin-top:8px;font-size:.9rem;">Canoni a partire da / mese</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 SOLUZIONE / PIPELINE -->
+  <section class="slide bg-grid" data-slide="2">
+    <div class="wrap">
+      <div class="eyebrow reveal">La soluzione in sintesi</div>
+      <h2 class="title reveal" style="max-width:50rem;">Come funziona il sistema <span class="accent">Ascesa Digitale × La Fenice</span></h2>
+      <div class="grid g4" style="margin-top:56px;">
+        <div class="reveal"><div class="stepnum">01</div><h3 style="font-size:1.1rem;">Locandina / Video UGC</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Ogni creatività ha un tracciamento dedicato: La Fenice sa sempre da quale locandina o video arriva il lead.</p></div>
+        <div class="reveal"><div class="stepnum">02</div><h3 style="font-size:1.1rem;">AI che screma</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Un modulo intelligente filtra i contatti fuori target prima ancora del contatto umano.</p></div>
+        <div class="reveal"><div class="stepnum">03</div><h3 style="font-size:1.1rem;">AI messaggistica + WhatsApp</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Flusso automatico di qualifica e nurturing multicanale (roadmap futura).</p></div>
+        <div class="reveal"><div class="stepnum">04</div><h3 style="font-size:1.1rem;">Lead profilato → al consulente</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Al consulente La Fenice (o all'agente di zona) arriva solo il contatto pronto a firmare.</p></div>
+      </div>
+      <p class="mono reveal" style="margin-top:48px;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);">Tracciamento sorgente · Scrematura automatica · Smistamento al consulente giusto</p>
+    </div>
+  </section>
+
+  <!-- 04 PROPOSTA LOCANDINE -->
+  <section class="slide bg-grid" data-slide="3">
+    <div class="wrap">
+      <div class="eyebrow reveal">Il piano · Parte 1 di 2</div>
+      <h2 class="title reveal">Campagne con <span class="accent">Locandine</span></h2>
+      <div class="grid split" style="margin-top:40px;">
+        <div>
+          <div class="card featrow reveal" style="margin-bottom:12px;"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Impostazione completa delle campagne Meta in Sicilia e su scala nazionale, con target separati per privati e partite IVA.</p></div>
+          <div class="card featrow reveal" style="margin-bottom:12px;"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Monitoraggio giornaliero e ottimizzazione continua delle campagne.</p></div>
+          <div class="card featrow reveal" style="margin-bottom:12px;"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Funnel di conversione: modulo scremato AI oppure landing page dedicata.</p></div>
+          <div class="card featrow reveal"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Opzione AI vocale in entrata/uscita che richiama il lead e lo screma ulteriormente.</p></div>
+        </div>
+        <div class="card-accent reveal" style="display:flex;flex-direction:column;justify-content:center;gap:18px;padding:28px;">
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Quota del budget</div><div class="display" style="font-size:2rem;margin-top:4px;">~1.000 €/mese</div></div>
+          <div class="hr"></div>
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Lead stimati / mese</div><div class="display accent" style="font-size:2rem;margin-top:4px;">~500</div></div>
+          <div class="hr"></div>
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Costo per lead stimato</div><div class="display" style="font-size:2rem;margin-top:4px;">~2 €</div></div>
+          <div style="border:1px solid rgba(255,107,44,.4);background:rgba(255,107,44,.1);border-radius:8px;padding:12px;"><div class="mono accent" style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;">Ruolo nel piano</div><div class="display" style="font-size:1.3rem;margin-top:2px;">Volume e offerte in evidenza</div></div>
+        </div>
+      </div>
+      <p class="reveal" style="margin-top:24px;font-size:.75rem;color:var(--muted);">La ripartizione tra locandine e video viene spostata ogni settimana verso la creatività che rende di più.</p>
+    </div>
+  </section>
+
+  <!-- 05 PROPOSTA VIDEO -->
+  <section class="slide bg-grid" data-slide="4">
+    <div class="wrap">
+      <div class="eyebrow reveal">Il piano · Parte 2 di 2</div>
+      <h2 class="title reveal">Campagne con <span class="accent">video UGC</span></h2>
+      <div class="grid split" style="margin-top:40px;">
+        <div>
+          <div class="card featrow reveal" style="margin-bottom:12px;"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Video UGC: persone reali raccontano in modo spontaneo perché hanno scelto il noleggio con La Fenice.</p></div>
+          <div class="card featrow reveal" style="margin-bottom:12px;"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Script, brief e coordinamento dei creator a cura di Ascesa Digitale; campagne, monitoraggio giornaliero e funnel come per le locandine.</p></div>
+          <div class="card featrow reveal" style="margin-bottom:12px;"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Opzione AI vocale in/out per scrematura e consegna del contatto iper-profilato al vostro consulente.</p></div>
+          <div class="card featrow reveal"><span class="ar">›</span><p style="margin:0;font-size:.95rem;">Il formato UGC genera fiducia: il contatto arriva già convinto, non solo incuriosito.</p></div>
+        </div>
+        <div class="card-accent reveal" style="display:flex;flex-direction:column;justify-content:center;gap:16px;padding:28px;">
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Quota del budget</div><div class="display" style="font-size:1.9rem;margin-top:4px;">~1.000 €/mese</div></div>
+          <div class="hr"></div>
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Lead stimati / mese</div><div class="display accent" style="font-size:1.9rem;margin-top:4px;">~500</div></div>
+          <div class="hr"></div>
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Costo per lead stimato</div><div class="display" style="font-size:1.9rem;margin-top:4px;">~2 €</div></div>
+          <div style="border:1px solid rgba(255,107,44,.4);background:rgba(255,107,44,.1);border-radius:8px;padding:12px;"><p style="margin:0;font-size:.85rem;line-height:1.4;">I lead da video UGC sono in genere <strong class="accent">più caldi</strong>: ideali da passare subito all'AI vocale e al consulente.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 RETARGETING -->
+  <section class="slide bg-grid" data-slide="5">
+    <div class="wrap">
+      <div class="eyebrow reveal">Non perdiamo nessun contatto</div>
+      <h2 class="title reveal">Il <span class="accent">Retargeting</span> che fa lavorare ogni euro</h2>
+      <div class="grid g3" style="margin-top:48px;">
+        <div class="card reveal" style="display:flex;flex-direction:column;padding:28px;"><span class="pill" style="margin-bottom:16px;">Lookalike</span><h3 style="font-size:1.25rem;">Pubblico simile</h3><p class="muted" style="margin-top:12px;font-size:.9rem;">Raggiungiamo nuove persone che assomigliano ai migliori clienti La Fenice.</p></div>
+        <div class="card reveal" style="display:flex;flex-direction:column;padding:28px;"><span class="pill" style="margin-bottom:16px;">Custom</span><h3 style="font-size:1.25rem;">Pubblico personalizzato</h3><p class="muted" style="margin-top:12px;font-size:.9rem;">Ri-contattiamo chi ha già interagito (sito, video, modulo) ma non ha ancora convertito.</p></div>
+        <div class="card reveal" style="display:flex;flex-direction:column;padding:28px;"><span class="pill" style="margin-bottom:16px;">Multi-step</span><h3 style="font-size:1.25rem;">Comunicazione avanzata</h3><p class="muted" style="margin-top:12px;font-size:.9rem;">Messaggi sequenziali e differenziati per fase del funnel, su più canali.</p></div>
+      </div>
+      <p class="display reveal" style="margin-top:40px;font-size:1.5rem;color:var(--muted);">Ogni euro investito da La Fenice lavora <span style="color:var(--text)">più a lungo.</span></p>
+    </div>
+  </section>
+
+  <!-- 07 COSTI E RESA -->
+  <section class="slide bg-grid" data-slide="6">
+    <div class="wrap">
+      <div class="eyebrow reveal">Investimento & ritorno atteso</div>
+      <h2 class="title reveal">Stima costi e resa</h2>
+      <div class="grid g2" style="margin-top:48px;">
+        <div class="card reveal" style="display:flex;flex-direction:column;padding:32px;">
+          <div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Scenario base · senza AI vocale</div>
+          <div class="display" style="font-size:3rem;margin-top:8px;">2.000 <span class="muted" style="font-size:1.3rem;">€/mese</span></div>
+          <div style="margin-top:24px;">
+            <div class="row" style="border-bottom:1px solid var(--line);padding-bottom:12px;"><span class="muted" style="font-size:.9rem;">Lead stimati / mese (CPL ~2 €)</span><span style="font-weight:700;">~1.000</span></div>
+            <div class="row" style="border-bottom:1px solid var(--line);padding:12px 0;"><span class="muted" style="font-size:.9rem;">Conversione</span><span style="font-weight:700;">1,5–2,5%</span></div>
+            <div class="row" style="padding-top:12px;"><span class="muted" style="font-size:.9rem;">Nuovi contratti / mese</span><span class="accent" style="font-weight:700;">~15–25</span></div>
+          </div>
+        </div>
+        <div class="card-accent reveal" style="display:flex;flex-direction:column;padding:32px;">
+          <div class="mono accent" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Con AI vocale · stesso budget</div>
+          <div class="display" style="font-size:3rem;margin-top:8px;">2.000 <span class="muted" style="font-size:1.3rem;">€/mese</span></div>
+          <div style="margin-top:24px;">
+            <div class="row" style="border-bottom:1px solid var(--line);padding-bottom:12px;"><span class="muted" style="font-size:.9rem;">Lead stimati / mese</span><span class="accent" style="font-weight:700;">~1.000</span></div>
+            <div class="row" style="border-bottom:1px solid var(--line);padding:12px 0;"><span class="muted" style="font-size:.9rem;">Conversione</span><span style="font-weight:700;">3–4%</span></div>
+            <div class="row" style="padding-top:12px;"><span class="muted" style="font-size:.9rem;">Nuovi contratti / mese</span><span class="accent" style="font-weight:700;">~30–40</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="reveal" style="margin-top:24px;font-size:.75rem;color:var(--muted);">Management fee Ascesa Digitale e budget pubblicitario sono separati. Proiezioni su un budget pubblicitario di 2.000 €/mese, ripartito tra locandine e video UGC, con costo per lead stimato di circa 2 €. Gli obiettivi vengono definiti e ottimizzati insieme, mese dopo mese.</p>
+    </div>
+  </section>
+
+  <!-- 08 PACCHETTO POINT -->
+  <section class="slide bg-grid" data-slide="7">
+    <div class="wrap">
+      <div class="eyebrow reveal">Modello scalabile</div>
+      <h2 class="title reveal">Un pacchetto pronto per <span class="accent">agenti e partner La Fenice</span></h2>
+      <div class="grid split-point" style="margin-top:40px;">
+        <div>
+          <div class="mono muted reveal" style="margin-bottom:16px;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Cosa diamo al singolo agente / partner</div>
+          <div class="card reveal" style="display:flex;align-items:center;gap:16px;padding:16px 20px;margin-bottom:12px;"><span class="mono accent">01</span><p style="margin:0;font-size:.95rem;">Campagna locale geolocalizzata sulla zona dell'agente</p></div>
+          <div class="card reveal" style="display:flex;align-items:center;gap:16px;padding:16px 20px;margin-bottom:12px;"><span class="mono accent">02</span><p style="margin:0;font-size:.95rem;">Funnel con modulo scremato AI / landing dedicata</p></div>
+          <div class="card reveal" style="display:flex;align-items:center;gap:16px;padding:16px 20px;margin-bottom:12px;"><span class="mono accent">03</span><p style="margin:0;font-size:.95rem;">Lead profilati consegnati in tempo reale</p></div>
+          <div class="card reveal" style="display:flex;align-items:center;gap:16px;padding:16px 20px;margin-bottom:12px;"><span class="mono accent">04</span><p style="margin:0;font-size:.95rem;">Opzione AI vocale di qualifica</p></div>
+          <div class="card reveal" style="display:flex;align-items:center;gap:16px;padding:16px 20px;"><span class="mono accent">05</span><p style="margin:0;font-size:.95rem;">Report mensile delle performance</p></div>
+        </div>
+        <div class="card-accent reveal" style="display:flex;flex-direction:column;justify-content:center;gap:24px;padding:28px;">
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Prezzo pacchetto agente</div><div class="display" style="font-size:1.9rem;margin-top:4px;">da definire</div></div>
+          <div class="hr"></div>
+          <div><div class="mono muted" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;">Lead stimati per agente / mese</div><div class="display accent" style="font-size:1.9rem;margin-top:4px;">da definire</div></div>
+          <div style="border:1px solid var(--line);background:rgba(12,14,17,.4);border-radius:8px;padding:12px;"><p class="muted" style="margin:0;font-size:.85rem;">Eventuale trasferta a parte, da concordare.</p></div>
+        </div>
+      </div>
+      <p class="muted reveal" style="margin-top:24px;font-size:.9rem;">Modello scalabile su tutta la rete di agenti e partner del programma «Collabora con noi» di La Fenice.</p>
+    </div>
+  </section>
+
+  <!-- 09 PERCHÉ ASCESA -->
+  <section class="slide bg-grid" data-slide="8">
+    <div class="wrap">
+      <div class="eyebrow reveal">Perché affidarsi a noi</div>
+      <h2 class="title reveal">Perché Ascesa Digitale</h2>
+      <div class="grid g2" style="margin-top:48px;">
+        <div class="card reveal" style="display:flex;gap:20px;padding:28px;"><span class="display accent" style="font-size:1.8rem;">01</span><div><h3 style="font-size:1.1rem;">Gestione quotidiana reale</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Non 'imposta e dimentica': monitoraggio e ottimizzazione ogni giorno.</p></div></div>
+        <div class="card reveal" style="display:flex;gap:20px;padding:28px;"><span class="display accent" style="font-size:1.8rem;">02</span><div><h3 style="font-size:1.1rem;">Tracciamento per sorgente</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Ogni lead è ricondotto alla locandina o creatività che l'ha generato.</p></div></div>
+        <div class="card reveal" style="display:flex;gap:20px;padding:28px;"><span class="display accent" style="font-size:1.8rem;">03</span><div><h3 style="font-size:1.1rem;">Scrematura AI + AI vocale</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Al consulente arriva solo il contatto iper-profilato, pronto a firmare.</p></div></div>
+        <div class="card reveal" style="display:flex;gap:20px;padding:28px;"><span class="display accent" style="font-size:1.8rem;">04</span><div><h3 style="font-size:1.1rem;">Esperienza multi-cliente</h3><p class="muted" style="margin-top:8px;font-size:.9rem;">Metodo collaudato sulla lead generation in più settori e territori.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 CTA -->
+  <section class="slide" data-slide="9">
+    <div style="position:absolute;inset:0;z-index:-1;overflow:hidden;">
+      <div class="blob" style="left:50%;top:50%;height:80vh;width:80vh;transform:translate(-50%,-50%);"></div>
+    </div>
+    <div class="wrap" style="text-align:center;">
+      <div class="eyebrow reveal">Il prossimo passo</div>
+      <h2 class="title reveal" style="margin:0 auto;max-width:56rem;font-size:clamp(2.6rem,7vw,4.6rem);">Partiamo dal primo test, <span class="accent">La Fenice.</span></h2>
+      <p class="lead reveal" style="margin:24px auto 0;max-width:34rem;">Definiamo insieme budget, zone pilota in Sicilia e prima creatività.</p>
+      <!-- COMPILA: email Ascesa Digitale nel link mailto e nel testo sotto -->
+      <a class="btn glow reveal" href="mailto:info@ascesadigitale.it" style="margin-top:40px;">Prenota una call con Ascesa Digitale <span>→</span></a>
+      <div class="mono reveal" style="margin-top:48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);">
+        <span>info@ascesadigitale.it</span><span>·</span><span>+39 ___ _______</span><span>·</span><span>ascesadigitale.it</span>
+      </div>
+      <p class="reveal" style="margin-top:40px;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(152,162,176,.6);">Proposta riservata · Ascesa Digitale per La Fenice srl · 2026</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total=slides.length;
+  var cur=document.getElementById('cur');
+  var dotsWrap=document.getElementById('dots');
+  var active=0;
+
+  // build dots
+  slides.forEach(function(_,i){
+    var b=document.createElement('button');
+    b.className='dot'+(i===0?' active':'');
+    b.setAttribute('aria-label','Vai alla slide '+(i+1));
+    b.addEventListener('click',function(){ slides[i].scrollIntoView({behavior:'smooth'}); });
+    dotsWrap.appendChild(b);
+  });
+  var dots=Array.prototype.slice.call(dotsWrap.children);
+
+  function setActive(i){
+    active=i;
+    cur.textContent=String(i+1).padStart(2,'0');
+    dots.forEach(function(d,k){ d.classList.toggle('active',k===i); });
+  }
+
+  // active slide observer
+  var actObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ setActive(Number(e.target.getAttribute('data-slide'))); }
+    });
+  },{root:deck,threshold:0.55});
+  slides.forEach(function(s){ actObs.observe(s); });
+
+  // reveal observer
+  var revObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+    });
+  },{root:deck,threshold:0.25});
+  document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+  // count-up
+  var cuObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target, to=parseInt(el.getAttribute('data-to'),10), start=null, dur=1200;
+      function tick(t){
+        if(!start) start=t;
+        var p=Math.min((t-start)/dur,1), eased=1-Math.pow(1-p,3);
+        el.textContent=Math.round(eased*to);
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      cuObs.unobserve(el);
+    });
+  },{root:deck,threshold:0.6});
+  document.querySelectorAll('.countup').forEach(function(el){ cuObs.observe(el); });
+
+  // keyboard
+  window.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'||e.key==='PageDown'){ e.preventDefault(); slides[Math.min(active+1,total-1)].scrollIntoView({behavior:'smooth'}); }
+    else if(e.key==='ArrowUp'||e.key==='PageUp'){ e.preventDefault(); slides[Math.max(active-1,0)].scrollIntoView({behavior:'smooth'}); }
+  });
+
+  // first slide reveal on load
+  setTimeout(function(){
+    slides[0].querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  },100);
+})();
+</script>
+</body>
+</html>
